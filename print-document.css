@@ -1,0 +1,55 @@
+.print-document{display:none}
+@media print {
+ body.print-document-ready>.site-header,body.print-document-ready>main,body.print-document-ready>.site-footer,body.print-document-ready>.skip-link{display:none!important}
+ .print-document{display:block!important}
+ .print-page{box-sizing:border-box;min-height:266mm;position:relative;padding:0 0 12mm;break-after:page;page-break-after:always}
+ .print-page:last-child{break-after:auto;page-break-after:auto}
+ .print-running{font-size:8pt;color:#666;border-bottom:1px solid #bbb;padding-bottom:7pt;margin-bottom:15pt}
+ .print-page-number{position:absolute;bottom:0;right:0;font-size:8pt;color:#666}
+ .print-page .case-top{margin-bottom:12pt}
+ .print-page .case-heading{display:block}
+ .print-page h2{font-size:24pt}
+ .print-page .case-heading h2 br{display:none}
+ .print-page .case-deck{font-size:13pt;margin-top:8pt}
+ .print-page .case-heading .project-meta{margin-top:10pt}
+ .print-page .project-resources{margin-top:8pt}
+ .print-page .outcome-row{margin-top:10pt;padding:9pt 0}
+ .print-page .product-figure{margin-top:15pt}
+ .print-page .image-button img{max-height:58mm}
+ .print-money .image-button img{max-height:30mm}
+ .print-page .detail-content{display:block!important}
+ .print-detail h2{font-size:20pt;margin-bottom:14pt}
+ .print-detail .demo-summary-title{font-size:12pt;font-weight:700}
+ .print-detail .demo-note{font-size:8pt;margin:5pt 0 8pt}
+ .print-detail .print-demo{font-size:9.5pt;margin-bottom:16pt}
+ .print-detail .detail-lead{display:block}
+ .print-detail.print-gong .detail-lead{margin-top:10pt}
+ .print-detail .detail-lead h3{font-size:12pt}
+ .print-detail .decision-columns{display:grid;grid-template-columns:1fr 1fr;gap:10pt 20pt;margin-top:10pt}
+ .print-detail .decision-columns section{margin:0;break-inside:avoid}
+ .print-detail .decision-columns p,.print-detail .detail-lead p{font-size:9.5pt;line-height:1.65}
+ .print-detail .decision-columns h4{font-size:10pt;margin-bottom:5pt}
+ .print-detail .test-contract{margin-top:14pt}
+ .print-detail .test-contract ul{columns:auto;font-size:9.5pt}
+ .print-page .ranking-visual{margin:0 0 16pt;padding:10pt}
+ .print-page .ranking-flow{display:grid;grid-template-columns:1fr 1fr;gap:10pt 18pt}
+ .print-page .ranking-flow li{margin:0}
+ .print-page .secondary-performance{margin-top:16pt;padding:12pt}
+ .print-page .lock-results{margin-top:14pt}
+ .print-page .lock-conditions{margin:0}
+ .print-page .hero{padding:30pt 0}
+ .print-page .index{margin-top:28pt;padding-top:24pt;border-top:1px solid #bbb}
+ .print-page .about{padding-top:0}
+ .print-page .contact-inner{padding:18pt 0}
+ .print-overview.print-money .test-contract ul{display:grid;grid-template-columns:1fr 1fr;gap:5pt 18pt;padding-left:14pt}
+ .print-overview .test-contract{margin-top:12pt}
+ .print-overview .test-contract ul{font-size:9pt;line-height:1.6}
+ .print-page .test-contract .scope-note{margin-top:6pt}
+ .print-detail.print-money .receipt-rule{padding:8pt 0;gap:15pt}
+ .print-detail.print-gong .print-demo{margin-bottom:10pt}
+ .print-detail.print-gong .detail-lead>p{margin-bottom:6pt}
+ .print-background .about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:24pt}
+ .print-background .about-grid>section+section{margin-top:0}
+ .print-background .skill-list>div{grid-template-columns:1fr;gap:3pt;padding:8pt 0}
+ .print-background .contact{margin-top:20pt}
+}
