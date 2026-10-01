@@ -95,16 +95,32 @@ function renderSlotRetry(){
 retrySelect.addEventListener('change',()=>{retryState=demos.initialSlotRetry(retrySelect.value);renderSlotRetry();});
 document.querySelector('#step-slot-retry').addEventListener('click',()=>{retryState=demos.stepSlotRetry(retryState);renderSlotRetry();feedback('#slot-retry-log, #slot-retry-status');});
 document.querySelector('#reset-slot-retry').addEventListener('click',()=>{retryState=demos.initialSlotRetry(retrySelect.value);renderSlotRetry();document.querySelector('#slot-retry-status').textContent='선택한 시나리오를 초기화했습니다. 첫 트랜잭션부터 다시 실행할 수 있습니다.';});
-for(const link of document.querySelectorAll('[data-open-detail]'))link.addEventListener('click',()=>{
- const detail=document.getElementById(link.hash.slice(1));
- if(detail instanceof HTMLDetailsElement)detail.open=true;
+// Expand a linked disclosure before native anchor navigation, including deep links.
+function revealHash(hash,scroll=false){
+ let id;
+ try{id=decodeURIComponent(hash.slice(1));}catch{return;}
+ if(!id)return;
+ const target=document.getElementById(id);
+ if(!target)return;
+ let node=target,opened=false;
+ while(node){
+  if(node instanceof HTMLDetailsElement&&!node.open){node.open=true;opened=true;}
+  node=node.parentElement;
+ }
+ if(opened&&scroll)requestAnimationFrame(()=>target.scrollIntoView({block:'start'}));
+}
+for(const link of document.querySelectorAll('a[href^="#"]'))link.addEventListener('click',event=>{
+ if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+ revealHash(link.hash);
 });
+window.addEventListener('hashchange',()=>revealHash(window.location.hash,true));
+revealHash(window.location.hash,true);
 
-// Printing must include closed disclosures; restore the reader's state afterward.
+// Printing includes every disclosure; duplicate print events keep the first snapshot.
 let printDetails=null;
 function preparePrint(){
  if(printDetails)return;
- printDetails=[...document.querySelectorAll('.case-detail')].map(detail=>[detail,detail.open]);
+ printDetails=[...document.querySelectorAll('details')].map(detail=>[detail,detail.open]);
  for(const [detail] of printDetails)detail.open=true;
 }
 function restoreAfterPrint(){
